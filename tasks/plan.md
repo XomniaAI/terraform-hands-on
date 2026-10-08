@@ -64,7 +64,7 @@ Tasks with acceptance criteria: [todo.md](todo.md).
 
 ### Phase 3: Ready for a session
 - [x] Task 5: EXERCISES.md (draft; 3 expectations to verify in Task 7)
-- [ ] Task 6: TRAINERS.md
+- [x] Task 6: TRAINERS.md (draft; cleanup loop to test in Task 3)
 - [ ] Task 7: Dry run with Fokke
 
 ### Checkpoint 3
