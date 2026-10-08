@@ -49,8 +49,8 @@ Plus, for trainers only: `TRAINERS.md`, the checklist before and after a session
 Tasks with acceptance criteria: [todo.md](todo.md).
 
 ### Phase 1: The thing works (as Owner)
-- [ ] Task 1: Terraform code deploys a page you can open
-- [ ] Task 2: Change and drift behave as the exercises say
+- [x] Task 1: Terraform code deploys a page you can open
+- [x] Task 2: Change and drift behave as the exercises say
 
 ### Checkpoint 1
 - [ ] Ji reviews the code and the page
