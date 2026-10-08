@@ -63,7 +63,7 @@ Tasks with acceptance criteria: [todo.md](todo.md).
 - [ ] A non-Owner account runs the README from start to finish
 
 ### Phase 3: Ready for a session
-- [ ] Task 5: EXERCISES.md
+- [x] Task 5: EXERCISES.md (draft; 3 expectations to verify in Task 7)
 - [ ] Task 6: TRAINERS.md
 - [ ] Task 7: Dry run with Fokke
 
