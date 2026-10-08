@@ -12,7 +12,7 @@
 - Drift: a tag changed in the portal shows as `~ tags` in `plan`; `apply` puts it back.
 - `destroy`: 5 destroyed. The resource group takes 1–3 minutes to delete.
 
-## Not verified yet (check in Task 7)
+## Not verified yet
 
 - Exercise 3b: renaming the storage account replaces the account, the static website and the blob (expected `3 to add, 0 to change, 3 to destroy`; not run).
 - Exercise 4 bonus: deleting `index.html` in the portal shows `+ create` for the blob (not run).

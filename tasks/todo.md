@@ -42,7 +42,7 @@ Plan and decisions: [plan.md](plan.md).
 
 ## Phase 2: It works as a trainee
 
-### Task 3: Test with only the 2 trainee roles · S · ~30 min
+### ~~Task 3: Test with only the 2 trainee roles~~ · dropped: trainers test it themselves
 
 **Description:** Log in as an account that has only Contributor and Storage Blob Data Contributor on the `training` subscription, and run the full cycle.
 
@@ -110,7 +110,7 @@ Plan and decisions: [plan.md](plan.md).
 
 **Files:** `TRAINERS.md`
 
-### Task 7: Dry run with Fokke · ~45 min
+### ~~Task 7: Dry run with Fokke~~ · dropped: trainers test it themselves
 
 **Description:** Fokke runs README + EXERCISES from their own laptop, as a trainee, without help. Note every question they ask.
 

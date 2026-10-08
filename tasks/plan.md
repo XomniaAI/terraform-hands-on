@@ -56,8 +56,8 @@ Tasks with acceptance criteria: [todo.md](todo.md).
 - [ ] Ji reviews the code and the page
 
 ### Phase 2: It works as a trainee
-- [ ] Task 3: Test with only the 2 trainee roles
-- [ ] Task 4: README for trainees
+- ~~Task 3: Test with only the 2 trainee roles~~ (trainers test it themselves)
+- [x] Task 4: README for trainees
 
 ### Checkpoint 2
 - [ ] A non-Owner account runs the README from start to finish
@@ -65,7 +65,7 @@ Tasks with acceptance criteria: [todo.md](todo.md).
 ### Phase 3: Ready for a session
 - [x] Task 5: EXERCISES.md (draft; 3 expectations to verify in Task 7)
 - [x] Task 6: TRAINERS.md (draft; cleanup loop to test in Task 3)
-- [ ] Task 7: Dry run with Fokke
+- ~~Task 7: Dry run with Fokke~~ (trainers test it themselves)
 
 ### Checkpoint 3
 - [ ] Fokke completes all 5 exercises from their laptop, with only the README
