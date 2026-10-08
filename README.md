@@ -49,7 +49,7 @@ A browser opens. Log in with the account your trainer gave access to. If it asks
 ## 3 · Get the code · 1 min
 
 ```sh
-git clone <repo-url> terraform-hands-on
+git clone https://github.com/JiDarwish/terraform-hands-on.git
 cd terraform-hands-on
 ```
 
