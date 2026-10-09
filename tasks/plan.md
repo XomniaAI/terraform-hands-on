@@ -10,14 +10,13 @@ Trainees run only `init`, `plan`, `apply`, `output` and `destroy`. They never se
 
 ```
 terraform-hands-on/
-├── README.md         install, az login, the 5 commands
+├── README.md         the one file trainees follow: setup + 12 exercises
 ├── main.tf           resource group, storage account, static website, index.html blob, random suffix
 ├── variables.tf      your_name, colour
 ├── outputs.tf        website_url
 ├── terraform.tf      Terraform + provider versions, provider settings
 ├── terraform.tfvars  your_name = "change-me"   ← the only file trainees edit
 ├── data/             sales.csv, customers.csv (exercises 5–6)
-└── EXERCISES.md      the 5 exercises
 ```
 
 Plus, for trainers only: `TRAINERS.md`, the checklist before and after a session.
@@ -39,7 +38,7 @@ Plus, for trainers only: `TRAINERS.md`, the checklist before and after a session
 
 ## Exercises (~100 min, guided)
 
-Full text: [EXERCISES.md](../EXERCISES.md). Each part ends in a working state; exercise 12 (destroy) works from any point.
+Full text: [README.md](../README.md), after the setup. Each part ends in a working state; exercise 12 (destroy) works from any point.
 
 | Part | Exercises |
 |---|---|
