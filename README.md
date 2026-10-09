@@ -94,6 +94,17 @@ Your page is live. Now the exercises.
 
 Each exercise has the same shape: **do** something, **run** a command, **expect** what you'll see, and **why** it matters.
 
+**Look things up** in the [azurerm provider docs](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs): every Azure resource Terraform knows, with all its settings. Search a resource name, for example `azurerm_storage_account`. Each page has:
+
+| Section | Tells you |
+|---|---|
+| **Example Usage** | working code to start from |
+| **Argument Reference** | everything you can set, and which settings are required |
+| **Attributes Reference** | what you can read from it after it's created, like `.id` or `.primary_web_endpoint` |
+| **Import** | the ID format for `import` (exercise 11) |
+
+The resources you use here: [resource group](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/resource_group) · [storage account](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/storage_account) · [static website](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/storage_account_static_website) · [container](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/storage_container) · [blob](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/storage_blob)
+
 The symbols in a plan:
 
 | Symbol | Means |
@@ -184,7 +195,7 @@ Now change `site` back to `st`, and run `terraform plan` again. Expect: `No chan
 
 ## Part 2 · Write your own code
 
-Until now you changed code that was already there. Now you write it. Type the code yourself instead of copying it: that's how it sticks.
+Until now you changed code that was already there. Now you write it. Type the code yourself instead of copying it: that's how it sticks. Keep the [provider docs](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs) open next to it: try to find each setting you type on the resource's page.
 
 ### 5 · A mini data lake · 10 min
 
