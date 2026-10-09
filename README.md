@@ -376,6 +376,8 @@ removed {
 
 **Why:** `removed` takes something out of your state without deleting it in Azure. The other team can now take it over with `import` (next exercise). The older way is `terraform state rm`: it does the same, but without a plan to review first.
 
+After the apply, delete the `removed` block and the commented-out `data` block: they've done their job. (In a team, keep `removed` until every state that uses this code has applied it. A state that hasn't would see the block gone and plan a destroy.)
+
 ### 11 · Take over something made by hand: `import` · 15 min
 
 Someone made a container by hand in the portal. Your team will manage it from now on.
