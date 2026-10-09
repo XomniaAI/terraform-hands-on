@@ -16,6 +16,7 @@ terraform-hands-on/
 ├── outputs.tf        website_url
 ├── terraform.tf      Terraform + provider versions, provider settings
 ├── terraform.tfvars  your_name = "change-me"   ← the only file trainees edit
+├── data/             sales.csv, customers.csv (exercises 5–6)
 └── EXERCISES.md      the 5 exercises
 ```
 
@@ -36,13 +37,16 @@ Plus, for trainers only: `TRAINERS.md`, the checklist before and after a session
 | `storage_use_azuread = true`, keys off | Writing `index.html` uses the trainee's Azure login, not storage keys. Needs the Storage Blob Data Contributor role. |
 | Same versions as the demo: Terraform `~> 1.16`, azurerm `~> 5.8` | One set of install instructions for the whole course. |
 
-## Exercises (~45 min, guided)
+## Exercises (~100 min, guided)
 
-1. **init → plan → apply → output** (10 min): open the URL, see your page.
-2. **Change in place** (5 min): add a tag. `plan` shows `~`.
-3. **Change that replaces** (10 min): change `colour`, the blob shows `-/+`. Then rename the storage account: the URL changes. On a data lake, that is lost data (deck slide 32).
-4. **Drift** (10 min): change the tag in the portal, run `plan`, apply to put it back.
-5. **destroy** (5 min): the URL stops working and your resource group disappears from the portal. Everyone else's sites still work.
+Full text: [EXERCISES.md](../EXERCISES.md). Each part ends in a working state; exercise 12 (destroy) works from any point.
+
+| Part | Exercises |
+|---|---|
+| 1 · Change things (35 min) | 1 read state · 2 change in place · 3 replace · 4 drift |
+| 2 · Write your own code (30 min) | 5 `raw` container + `sales.csv` · 6 `for_each` + `moved` · 7 `prevent_destroy` |
+| 3 · Work with state (30 min) | 8 lock (2 terminals) · 9 lost state · 10 `removed` · 11 `import` (+ pair bonus: 2 states, 1 resource) |
+| The end (5 min) | 12 destroy |
 
 ## Task list
 

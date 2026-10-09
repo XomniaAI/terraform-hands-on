@@ -2,7 +2,7 @@
 
 You deploy a small web page to Azure with Terraform, from your own laptop. It shows your name, in your colour. Then you change it, break it, and remove it again.
 
-**~15 min to get your page live. Then the exercises: [EXERCISES.md](EXERCISES.md).**
+**~15 min to get your page live. Then ~100 min of exercises: [EXERCISES.md](EXERCISES.md).**
 
 What Terraform creates for you:
 
@@ -81,7 +81,7 @@ Now do the exercises: [EXERCISES.md](EXERCISES.md).
 At the end of the session:
 
 ```sh
-terraform destroy    # expect: 5 to destroy, answer: yes
+terraform destroy    # read the list, then answer: yes
 ```
 
 Your page stops working and your resource group disappears from Azure. Other trainees' pages keep working: your Terraform only knows about your own resources.
@@ -97,3 +97,5 @@ Your page stops working and your resource group disappears from Azure. Other tra
 | `403` or `AuthorizationFailed` | Your account has no access to the training subscription yet | Tell your trainer |
 | `subscription … could not be found` | You're logged in with another account | `az logout`, then `az login` with the right account |
 | `terraform: command not found` | The terminal started before the install | Open a new terminal |
+| The portal's Storage browser says key-based authentication is not permitted | Storage keys are off on purpose | Click **Switch to Microsoft Entra user account** |
+| `Instance cannot be destroyed` on `destroy` | `prevent_destroy` from exercise 7 | Delete the `lifecycle` block, then `destroy` again |
