@@ -339,13 +339,25 @@ terraform plan                               # expect: No changes
 
 Another team takes over your CSV files. They must keep existing, but you stop managing them.
 
-**Do (a):** delete the whole `azurerm_storage_blob "data"` block.
+**Do (a):** the obvious move: you don't manage the files anymore, so you take them out of your code. Comment out the whole `azurerm_storage_blob "data"` block by putting `#` in front of every line:
+```hcl
+# resource "azurerm_storage_blob" "data" {
+#   for_each = toset(["sales.csv", "customers.csv"])
+#
+#   name                 = each.key
+#   storage_container_id = azurerm_storage_container.raw.id
+#   type                 = "Block"
+#   source               = "data/${each.key}"
+# }
+```
 
 **Run:** `terraform plan`. **Don't apply.**
 
-**Expect:** `- destroy` on both files, `Plan: 0 to add, 0 to change, 2 to destroy`. **Deleting code means deleting the resource.**
+**Expect:** `- destroy` on both files, `Plan: 0 to add, 0 to change, 2 to destroy`.
 
-**Do (b):** tell Terraform to let go instead. Add:
+That's not what you meant. You wanted to *stop managing* the files, but Terraform reads it differently: "it's in my state, it's no longer in the code, so it should no longer exist". **Commenting out or deleting code means deleting the resource.** Apply this, and the other team loses its files.
+
+**Do (b):** tell Terraform to let go instead. Leave the block commented out, and add:
 ```hcl
 removed {
   from = azurerm_storage_blob.data
