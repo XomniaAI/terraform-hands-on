@@ -152,7 +152,11 @@ colour = "orange"
 
 **Expect:** the `index.html` blob shows `-/+ must be replaced`, and `Plan: 1 to add, 0 to change, 1 to destroy`. Apply it, then refresh your page: it's orange.
 
-**Do (b):** in `main.tf`, change the storage account name from `"st${…` to `"site${…`.
+**Do (b):** in `main.tf`, find the `name` line of the storage account and change `st` at the start to `site`:
+```hcl
+  name = "st${var.your_name}${random_string.suffix.result}"     # before
+  name = "site${var.your_name}${random_string.suffix.result}"   # after
+```
 
 **Run:** `terraform plan`. **Don't apply.**
 
@@ -160,7 +164,7 @@ colour = "orange"
 
 **Why:** some settings can't be changed on an existing resource, like a storage account's name. Terraform deletes the old one and builds a new one. For your page that's harmless. **On a data lake, it deletes all your data.** That's why you always read the plan before you type `yes`.
 
-Now change the name back to `"st${…`, and run `terraform plan` again. Expect: `No changes`. Nothing happened, because you didn't apply.
+Now change `site` back to `st`, and run `terraform plan` again. Expect: `No changes`. Your code matches Azure again, and nothing was deleted, because you never applied.
 
 ### 4 · Drift: someone changes it by hand · 10 min
 
