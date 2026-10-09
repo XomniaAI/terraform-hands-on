@@ -9,7 +9,7 @@ You deploy a small web page to Azure with Terraform, from your own laptop. It sh
 | [Setup](#setup) | install, log in, deploy your page | 15 min |
 | [Part 1 · Change things](#part-1--change-things) | read a plan: create, change, replace, drift | 35 min |
 | [Part 2 · Write your own code](#part-2--write-your-own-code) | new resources, `for_each`, `moved`, `prevent_destroy` | 30 min |
-| [Part 3 · Work with state](#part-3--work-with-state) | the lock, lost state, `removed`, `import` | 30 min |
+| [Part 3 · Work with state](#part-3--work-with-state) | the lock, lost state, `removed`, `import` | 35 min |
 | [The end](#12--remove-everything--5-min) | remove everything | 5 min |
 
 Running out of time? Jump to [exercise 12](#12--remove-everything--5-min) whenever you want. It works from any point.
@@ -376,13 +376,13 @@ removed {
 
 **Why:** `removed` takes something out of your state without deleting it in Azure. The other team can now take it over with `import` (next exercise). The older way is `terraform state rm`: it does the same, but without a plan to review first.
 
-### 11 · Take over something made by hand: `import` · 10 min
+### 11 · Take over something made by hand: `import` · 15 min
 
 Someone made a container by hand in the portal. Your team will manage it from now on.
 
 **Do (a):** in the portal: storage account → **Storage browser** → **Blob containers** → **Add container**. Name it `archive`, then **Create**.
 
-**Do (b):** add this to `main.tf`:
+**Do (b):** add this to `main.tf`. It says: "put the existing container into my state, at the address `azurerm_storage_container.archive`".
 ```hcl
 import {
   to = azurerm_storage_container.archive
@@ -390,14 +390,33 @@ import {
 }
 ```
 
-**Run:**
+**Run:** `terraform plan`
+
+**Expect:** `Error: Configuration for import target does not exist`. Terraform knows *where* to put the container in state, but there's no code for it yet. Every resource in state needs a block in your code.
+
+**Do (c):** write that block yourself. It looks like your `raw` container from exercise 5:
+```hcl
+resource "azurerm_storage_container" "archive" {
+  name               = "archive"
+  storage_account_id = azurerm_storage_account.site.id
+}
+```
+
+**Run:** `terraform plan`
+
+**Expect:** `Plan: 1 to import, 0 to add, 0 to change, 0 to destroy`. Your code matches the real container exactly, so nothing changes. If you see `~`, your block differs from what's in Azure: Terraform would change the real container to match your code. Fix the block until it says `0 to change`.
+
+**Do (d): the shortcut.** Writing blocks by hand is fine for 1 container, but slow for 50 resources. Terraform can write them for you. Comment out your `archive` block with `#`, then:
+
 ```sh
 terraform plan -generate-config-out=generated.tf
 ```
 
-**Expect:** `Plan: 1 to import, 0 to add, 0 to change, 0 to destroy`, and a new file `generated.tf`. Open it: Terraform wrote the code for the container for you.
+**Expect:** the same `Plan: 1 to import, 0 to add, 0 to change, 0 to destroy`, and a new file `generated.tf`. Open it: Terraform read the real container in Azure and wrote the block for you. Compare it with yours. The generated one has the full storage account ID typed out where you used `azurerm_storage_account.site.id`, and it may list settings you left out. Generated code works, but you tidy it up before you keep it.
 
-**Run:** `terraform apply`. Expect: `Resources: 1 imported`. Then run `terraform state list`: `archive` is there.
+**Do (e):** keep your own version. Delete `generated.tf`, and remove the `#` from your `archive` block. Two blocks for the same address is an error.
+
+**Run:** `terraform apply`. Expect: `Resources: 1 imported, 0 added, 0 changed, 0 destroyed`. Then run `terraform state list`: `archive` is there.
 
 **Why:** `import` brings an existing resource into your state without changing it. It's how teams move hand-made resources into code. After the apply, delete the `import` block: it has done its job.
 
